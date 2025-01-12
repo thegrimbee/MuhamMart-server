@@ -8,7 +8,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 const app = express();
 
-app.get('/api', (req, res) => {
+app.get('/api/all-customers', (req, res) => {
     res.json(
         {"customer 1": "Alice",
         "customer 2": "Bob"
@@ -16,7 +16,20 @@ app.get('/api', (req, res) => {
     )
     });
 
-app.listen(8080, () => {
+app.get('/api/customer/:id', (req, res) => {
+    res.json(
+        {"customer": req.params.id}
+    )
+    });
+
+app.post('/api/customer', (req, res) => {
+    res.json(
+        {"customer": "Alice"}
+    )
+    });
+    
+
+    app.listen(8080, () => {
     console.log('localhost:8080/api');
 }); 
 
